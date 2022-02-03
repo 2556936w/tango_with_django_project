@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
-from rango.models import CategoryForm
+from rango.forms import CategoryForm
 
 
 def index(request):
