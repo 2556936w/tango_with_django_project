@@ -22,3 +22,12 @@ class PageForm(forms.ModelForm):
         model = Page
         # Fields to be excluded
         exclude = ('category',)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        url = cleaned_data.get('url')
+        # If URL does not start with http, prepend http
+        if url and not url.startswith('http://'):
+            url = f'http://{url}'
+            cleaned_data['url'] = url
+        return cleaned_data
